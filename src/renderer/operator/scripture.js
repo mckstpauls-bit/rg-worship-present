@@ -105,18 +105,51 @@
         paintSelection();
       }
       dragging = true;
+      at = { x: e.clientX, y: e.clientY };
+      clearInterval(scrollTimer);
+      scrollTimer = setInterval(autoScroll, 40);
       list.setPointerCapture(e.pointerId);
       e.preventDefault(); // no text selection or scroll-drag while choosing verses
     });
 
+    // Dragging near the top or bottom edge scrolls the list, so a long reading can be taken in one go.
+    let at = null;
+    let scrollTimer = null;
+    const EDGE = 30;
+
+    const extendToPointer = () => {
+      if (!at) return;
+      const r = list.getBoundingClientRect();
+      const y = Math.min(Math.max(at.y, r.top + 2), r.bottom - 2);
+      selectTo(verseAt(at.x, y));
+    };
+
+    const autoScroll = () => {
+      if (!dragging || !at) return;
+      const r = list.getBoundingClientRect();
+      const up = at.y - r.top;
+      const down = r.bottom - at.y;
+      let dy = 0;
+      if (up < EDGE) dy = -Math.max(6, (EDGE - up) * 0.9);
+      else if (down < EDGE) dy = Math.max(6, (EDGE - down) * 0.9);
+      if (dy) {
+        list.scrollTop += dy;
+        extendToPointer();
+      }
+    };
+
     list.addEventListener('pointermove', (e) => {
       if (!dragging) return;
-      selectTo(verseAt(e.clientX, e.clientY));
+      at = { x: e.clientX, y: e.clientY };
+      extendToPointer();
     });
 
     const end = (e) => {
       if (!dragging) return;
       dragging = false;
+      at = null;
+      clearInterval(scrollTimer);
+      scrollTimer = null;
       try { list.releasePointerCapture(e.pointerId); } catch (_) { /* already released */ }
       renderPeek();
     };

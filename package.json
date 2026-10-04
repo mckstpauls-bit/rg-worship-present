@@ -2,7 +2,7 @@
   "name": "rg-present",
   "productName": "RG-Present",
   "version": "1.1.0",
-  "description": "Worship presentation software for Windows \u2014 hymns, Bibles, themes and dual-screen output.",
+  "description": "Worship presentation software for Windows — hymns, Bibles, themes and dual-screen output.",
   "main": "src/main/main.js",
   "author": {
     "name": "RG DEV Industries",
@@ -44,8 +44,7 @@
           ]
         }
       ],
-      "icon": "build/icon.ico",
-      "publisherName": "RG DEV Industries"
+      "icon": "build/icon.ico"
     },
     "nsis": {
       "oneClick": false,
@@ -63,7 +62,7 @@
     "directories": {
       "output": "dist"
     },
-    "copyright": "Copyright \u00a9 RG DEV Industries"
+    "copyright": "Copyright © RG DEV Industries"
   },
   "dependencies": {
     "adm-zip": "^0.6.1",
