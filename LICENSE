@@ -1,0 +1,22 @@
+RG-Present
+Copyright (c) RG DEV Industries <rgdev.ke@gmail.com>
+
+All rights reserved.
+
+The source code in this repository is the property of RG DEV Industries.
+
+The hymn, Bible and liturgy content shipped with RG-Present is in the public
+domain and is not covered by the above. Each content pack records its own
+source in content-src/<pack>/manifest.json and CHANGELOG.md:
+
+  King James Version                   public domain
+  The Open Hymnal (2014.06)            openhymnal.org, freely distributable
+  The Christian Hymn Book (1870)       Project Gutenberg #46041
+  The Otterbein Hymnal (1890)          Project Gutenberg #16455
+  Wesleyan Methodist Hymn Book (1869)  archive.org/details/wesleyanmethodis00wesl
+  Sacred Songs & Solos (Sankey)        archive.org, public domain
+  Iuku ria Rwimbo (Kimeru)             transcribed from a supplied slide deck
+
+Bible translations that are still in copyright, such as the NIV or HCSB, are
+NOT included in this repository or in the installer. They are imported by each
+church from files it is licensed to use.

@@ -1,0 +1,9 @@
+{
+  "id": "methodist-hymn-book-1869",
+  "name": "Wesleyan Methodist Hymn Book (1869)",
+  "version": "1.0.0",
+  "type": "content",
+  "language": "en",
+  "folder": "Hymns – English",
+  "description": "A Collection of Hymns for the Use of the People Called Methodists, with supplement (London, 1869). Public domain. Text from the Internet Archive scan (archive.org/details/wesleyanmethodis00wesl), cleaned by tools/parse-wesleyan-ocr.js. Songs tagged 'proofread' have an uncertain first line."
+}

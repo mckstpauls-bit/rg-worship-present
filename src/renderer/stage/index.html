@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>RG-Present — Stage Display</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; color: #fff; font-family: "Segoe UI", sans-serif; overflow: hidden; cursor: none; }
+    body { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1.2vh 2vw; font-size: 3.2vh; color: #9aa3b8; border-bottom: 1px solid #222; }
+    #state { font-weight: 700; letter-spacing: .08em; }
+    #state.live { color: #ff5a5a; }
+    #clock { font-variant-numeric: tabular-nums; color: #fff; font-size: 4.4vh; font-weight: 600; }
+    #current { min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 2vh 4vw; text-align: center; white-space: pre-wrap; font-weight: 600; line-height: 1.2; }
+    #next { border-top: 1px solid #222; padding: 1.6vh 4vw 2.4vh; color: #f3c969; font-size: 3.6vh; white-space: pre-wrap; line-height: 1.25; max-height: 26vh; overflow: hidden; }
+    #next::before { content: "NEXT  "; color: #6c7488; font-size: 2.6vh; letter-spacing: .1em; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header><span id="title">RG-Present</span><span id="state">—</span><span id="clock"></span></header>
+  <div id="current"></div>
+  <div id="next"></div>
+  <script src="stage.js"></script>
+</body>
+</html>

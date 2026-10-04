@@ -1,0 +1,33 @@
+{
+  "overlay": "rgba(0,0,0,0)",
+  "font": {
+    "family": "Segoe UI",
+    "weight": 600,
+    "color": "#ffffff",
+    "maxSize": 92,
+    "minSize": 30,
+    "lineHeight": 1.28,
+    "shadow": true,
+    "uppercase": false
+  },
+  "align": "center",
+  "valign": "middle",
+  "box": {
+    "x": 7,
+    "y": 9,
+    "w": 86,
+    "h": 74
+  },
+  "footer": {
+    "show": true,
+    "template": "{number} {title}",
+    "size": 26,
+    "color": "rgba(255,255,255,0.72)"
+  },
+  "key": "meru-blue",
+  "name": "Meru Blue",
+  "background": {
+    "type": "gradient",
+    "value": "linear-gradient(170deg, #0a64c2 0%, #1487de 38%, #0b3d7a 100%)"
+  }
+}

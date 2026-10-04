@@ -1,0 +1,152 @@
+<!doctype html>
+<html data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' rgmedia:; img-src 'self' rgmedia: data:; media-src 'self' rgmedia:; style-src 'self' 'unsafe-inline'">
+  <title>RG-Present</title>
+  <link rel="stylesheet" href="../shared/render.css">
+  <link rel="stylesheet" href="operator.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="brand"><span class="brand-mark"></span>RG-Present</div>
+    <div class="tb-group">
+      <button class="tb" data-action="service-new" title="New service (Ctrl+N)"><i data-icon="file"></i>New</button>
+      <button class="tb" data-action="service-open" title="Open saved service (Ctrl+O)"><i data-icon="folder"></i>Open</button>
+      <button class="tb" data-action="service-save" title="Save service (Ctrl+S)"><i data-icon="save"></i>Save</button>
+    </div>
+    <div class="service-name" id="serviceName" title="Click to rename">Untitled service</div>
+    <div class="tb-group">
+      <button class="tb" data-action="import-hymns" title="Import hymns from TXT, CSV, Word or PowerPoint"><i data-icon="import"></i>Import</button>
+      <button class="tb" data-action="themes" title="Themes"><i data-icon="palette"></i>Themes</button>
+      <button class="tb" data-action="settings" title="Settings"><i data-icon="gear"></i>Settings</button>
+    </div>
+    <div class="tb-group">
+      <button class="tb pill" id="btnOutput" data-action="toggle-output" title="Audience output window"><span class="dot"></span>Output</button>
+      <button class="tb pill" id="btnStage" data-action="toggle-stage" title="Stage display for musicians"><span class="dot"></span>Stage</button>
+      <button class="tb icon-only" data-action="ui-theme" title="Light / dark"><i data-icon="contrast"></i></button>
+    </div>
+  </header>
+
+  <main class="workspace" id="workspace">
+    <!-- Schedule -->
+    <section class="panel" id="schedulePanel">
+      <div class="panel-head">
+        <h2>Service</h2>
+        <div class="head-actions">
+          <button class="mini" data-action="add-custom" title="Add a text / announcement slide"><i data-icon="text"></i></button>
+          <button class="mini" data-action="add-media" title="Add an image or video"><i data-icon="image"></i></button>
+          <button class="mini" data-action="add-countdown" title="Add a countdown timer"><i data-icon="clock"></i></button>
+        </div>
+      </div>
+      <ol class="schedule" id="schedule"></ol>
+      <div class="empty-hint" id="scheduleEmpty">Drag songs here from the library,<br>or double-click a song to add it.</div>
+    </section>
+    <div class="splitter v" data-split="schedule"></div>
+
+    <!-- Preview -->
+    <section class="panel" id="previewPanel">
+      <div class="panel-head">
+        <h2>Preview</h2>
+        <span class="item-title" id="previewTitle"></span>
+        <div class="head-actions">
+          <div class="lang-toggle" id="langToggle" hidden></div>
+          <button class="mini" data-action="edit-preview" title="Edit this item"><i data-icon="edit"></i></button>
+        </div>
+      </div>
+      <div class="monitor-wrap"><div class="monitor" id="previewMonitor"></div></div>
+      <div class="slides" id="previewSlides"></div>
+      <div class="panel-foot">
+        <button class="go-live" data-action="go-live" title="Send preview to the audience (Enter)">Go Live <i data-icon="arrow-right"></i></button>
+      </div>
+    </section>
+    <div class="splitter v" data-split="preview"></div>
+
+    <!-- Live -->
+    <section class="panel live" id="livePanel">
+      <div class="panel-head">
+        <h2><span class="live-dot"></span>Live</h2>
+        <span class="item-title" id="liveTitle"></span>
+      </div>
+      <div class="monitor-wrap"><div class="monitor" id="liveMonitor"></div></div>
+      <div class="slides" id="liveSlides"></div>
+      <div class="live-controls">
+        <button class="ctl" data-action="prev" title="Previous slide (←)"><i data-icon="prev"></i></button>
+        <button class="ctl" data-action="next" title="Next slide (→ / Space)"><i data-icon="next"></i></button>
+        <span class="sep"></span>
+        <button class="ctl toggle" id="btnBlack" data-action="cover-black" title="Black screen (B)">Black</button>
+        <button class="ctl toggle" id="btnClear" data-action="cover-clear" title="Hide text, keep background (C)">Clear</button>
+        <button class="ctl toggle" id="btnLogo" data-action="cover-logo" title="Logo screen (L)">Logo</button>
+        <span class="sep"></span>
+        <button class="ctl toggle" id="btnAuto" data-action="auto" title="Auto-advance slides">Auto</button>
+        <input class="auto-secs" id="autoSecs" type="number" min="2" max="120" value="8" title="Seconds per slide">
+        <select class="transition" id="transitionSelect" title="Transition">
+          <option value="fade">Fade</option>
+          <option value="slow">Slow fade</option>
+          <option value="cut">Cut</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="splitter h" data-split="library"></div>
+
+    <!-- Library -->
+    <section class="panel library" id="libraryPanel">
+      <nav class="lib-tabs" id="libTabs">
+        <button class="tab active" data-tab="songs">Songs</button>
+        <button class="tab" data-tab="scripture">Scripture</button>
+        <button class="tab" data-tab="media">Media</button>
+        <button class="tab" data-tab="services">Saved services</button>
+      </nav>
+      <div class="lib-body" data-body="songs">
+        <aside class="folders" id="folders"></aside>
+        <div class="results">
+          <div class="search-row">
+            <input id="search" type="search" placeholder="Search number, title, English title or any line…  (Ctrl+F)" autocomplete="off" spellcheck="false">
+            <button class="mini" data-action="new-song" title="New song"><i data-icon="plus"></i></button>
+          </div>
+          <div class="table-head"><span>#</span><span>Title</span><span>Also known as</span><span>Folder</span></div>
+          <div class="song-list" id="songList" tabindex="0"></div>
+        </div>
+        <aside class="song-peek" id="songPeek"></aside>
+      </div>
+      <div class="lib-body" data-body="scripture" hidden>
+        <aside class="folders bible-books">
+          <div class="bible-pick"><select id="bibleSelect" title="Translation"></select><button class="mini" data-action="bible-import" title="Import a Bible translation"><i data-icon="plus"></i></button></div>
+          <div id="bookList"></div>
+        </aside>
+        <div class="results">
+          <div class="search-row">
+            <input id="scriptureSearch" type="search" placeholder="Type a reference (John 3:16-18, Ps 23) or words to search — or pick the book, chapter and verses below" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="chapter-chips" id="chapterChips"></div>
+          <div class="verse-hint">Tap a verse · drag down the list for a range · double-tap puts a verse straight on the screen</div>
+          <div class="verse-list" id="verseList"></div>
+          <div class="verse-list" id="scriptureResults" hidden></div>
+        </div>
+        <aside class="song-peek" id="scripturePeek"></aside>
+      </div>
+      <div class="lib-body" data-body="media" hidden>
+        <div class="media-bar"><button class="btn" data-action="media-import"><i data-icon="plus"></i>Add images or videos</button><span class="muted">Double-click to add to the service. Use Themes to set a background.</span></div>
+        <div class="media-grid" id="mediaGrid"></div>
+      </div>
+      <div class="lib-body" data-body="services" hidden>
+        <div class="services-list" id="servicesList"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal-root" id="modalRoot"></div>
+
+  <script src="../shared/lyrics.js"></script>
+  <script src="../shared/bible.js"></script>
+  <script src="../shared/render.js"></script>
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+  <script src="library.js"></script>
+  <script src="scripture.js"></script>
+  <script src="dialogs.js"></script>
+  <script src="boot.js"></script>
+</body>
+</html>

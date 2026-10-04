@@ -1,0 +1,33 @@
+{
+  "overlay": "rgba(0,0,0,0)",
+  "font": {
+    "family": "Segoe UI",
+    "weight": 600,
+    "color": "#1b1d24",
+    "maxSize": 92,
+    "minSize": 30,
+    "lineHeight": 1.28,
+    "shadow": false,
+    "uppercase": false
+  },
+  "align": "center",
+  "valign": "middle",
+  "box": {
+    "x": 7,
+    "y": 9,
+    "w": 86,
+    "h": 74
+  },
+  "footer": {
+    "show": true,
+    "template": "{number} {title}",
+    "size": 26,
+    "color": "rgba(27,29,36,0.6)"
+  },
+  "key": "clean-light",
+  "name": "Clean Light",
+  "background": {
+    "type": "gradient",
+    "value": "linear-gradient(180deg, #fbfaf6 0%, #ece8dd 100%)"
+  }
+}

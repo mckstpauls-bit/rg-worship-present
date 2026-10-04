@@ -1,0 +1,8 @@
+node_modules/
+dist/
+content/
+*.log
+local-bibles/
+build/icon.ico
+build/icon.png
+feed/

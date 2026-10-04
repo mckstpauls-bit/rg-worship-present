@@ -1,0 +1,80 @@
+{
+  "name": "rg-present",
+  "productName": "RG-Present",
+  "version": "1.1.0",
+  "description": "Worship presentation software for Windows \u2014 hymns, Bibles, themes and dual-screen output.",
+  "main": "src/main/main.js",
+  "author": {
+    "name": "RG DEV Industries",
+    "email": "rgdev.ke@gmail.com"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build-packs": "node tools/build-packs.js",
+    "dist": "npm run build-packs && electron-builder --win",
+    "parse-hymnal": "node tools/parse-wesleyan-ocr.js",
+    "make-icons": "electron tools/make-icons.js",
+    "parse-hymns": "node tools/parse-wesleyan-ocr.js && node tools/parse-gutenberg-hymnal.js content-src/otterbein-hymnal/source/pg16455.txt content-src/otterbein-hymnal/songs.json && node tools/parse-gutenberg-hymnal.js content-src/christian-hymn-book/source/pg46041.txt content-src/christian-hymn-book/songs.json",
+    "make-feed": "node tools/make-update-feed.js"
+  },
+  "build": {
+    "appId": "org.rgpresent.app",
+    "productName": "RG-Present",
+    "files": [
+      "src/**/*",
+      "package.json",
+      "CHANGELOG.md",
+      "build/icon.png",
+      "!**/*.map"
+    ],
+    "extraResources": [
+      {
+        "from": "content",
+        "to": "content"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "publisherName": "RG DEV Industries"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "RG-Present-Setup-${version}.exe",
+      "shortcutName": "RG-Present",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "uninstallDisplayName": "RG-Present"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "copyright": "Copyright \u00a9 RG DEV Industries"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "mammoth": "^1.13.0",
+    "sql.js": "^1.14.2"
+  },
+  "devDependencies": {
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.0": true
+  }
+}

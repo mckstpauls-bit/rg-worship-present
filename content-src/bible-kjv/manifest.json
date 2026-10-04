@@ -1,0 +1,8 @@
+{
+  "id": "bible-kjv",
+  "name": "King James Version (Bible)",
+  "version": "1.0.0",
+  "type": "content",
+  "language": "en",
+  "description": "Authorized King James Version, public domain. 66 books, 31,102 verses."
+}

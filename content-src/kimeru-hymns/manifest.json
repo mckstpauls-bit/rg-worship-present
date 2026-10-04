@@ -1,0 +1,10 @@
+{
+  "id": "kimeru-iuku-ria-rwimbo",
+  "name": "Iuku ria Rwimbo (Kimeru)",
+  "version": "1.0.0",
+  "type": "content",
+  "language": "mer",
+  "folder": "Hymns – Kimeru",
+  "titleFromFirstLine": true,
+  "description": "Kimeru hymns (132) and liturgy texts transcribed from Iuku_Ria_Rwimbo.pptx. Each hymn keeps its English title for searching."
+}

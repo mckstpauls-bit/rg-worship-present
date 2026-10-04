@@ -1,0 +1,34 @@
+{
+  "overlay": "rgba(0,0,0,0)",
+  "font": {
+    "family": "Segoe UI",
+    "weight": 600,
+    "color": "#ffffff",
+    "maxSize": 64,
+    "minSize": 26,
+    "lineHeight": 1.28,
+    "shadow": true,
+    "uppercase": false
+  },
+  "align": "center",
+  "valign": "bottom",
+  "box": {
+    "x": 5,
+    "y": 66,
+    "w": 90,
+    "h": 28
+  },
+  "footer": {
+    "show": false,
+    "template": "{number} {title}",
+    "size": 26,
+    "color": "rgba(255,255,255,0.72)"
+  },
+  "key": "lower-third",
+  "name": "Lower Third (stream/video)",
+  "background": {
+    "type": "color",
+    "value": "#000000"
+  },
+  "band": "rgba(6,10,24,0.78)"
+}

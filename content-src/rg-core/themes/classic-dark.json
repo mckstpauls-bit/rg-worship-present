@@ -1,0 +1,33 @@
+{
+  "overlay": "rgba(0,0,0,0)",
+  "font": {
+    "family": "Segoe UI",
+    "weight": 600,
+    "color": "#ffffff",
+    "maxSize": 92,
+    "minSize": 30,
+    "lineHeight": 1.28,
+    "shadow": true,
+    "uppercase": false
+  },
+  "align": "center",
+  "valign": "middle",
+  "box": {
+    "x": 7,
+    "y": 9,
+    "w": 86,
+    "h": 74
+  },
+  "footer": {
+    "show": true,
+    "template": "{number} {title}",
+    "size": 26,
+    "color": "rgba(255,255,255,0.72)"
+  },
+  "key": "classic-dark",
+  "name": "Classic Dark",
+  "background": {
+    "type": "gradient",
+    "value": "radial-gradient(ellipse at 30% 20%, #1f2f5a 0%, #0b1226 55%, #050810 100%)"
+  }
+}

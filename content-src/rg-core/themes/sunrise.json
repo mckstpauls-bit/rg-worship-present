@@ -1,0 +1,33 @@
+{
+  "overlay": "rgba(0,0,0,0)",
+  "font": {
+    "family": "Segoe UI",
+    "weight": 600,
+    "color": "#ffffff",
+    "maxSize": 92,
+    "minSize": 30,
+    "lineHeight": 1.28,
+    "shadow": true,
+    "uppercase": false
+  },
+  "align": "center",
+  "valign": "middle",
+  "box": {
+    "x": 7,
+    "y": 9,
+    "w": 86,
+    "h": 74
+  },
+  "footer": {
+    "show": true,
+    "template": "{number} {title}",
+    "size": 26,
+    "color": "rgba(255,255,255,0.72)"
+  },
+  "key": "sunrise",
+  "name": "Sunrise",
+  "background": {
+    "type": "gradient",
+    "value": "linear-gradient(160deg, #3b1c4a 0%, #a2445a 45%, #f0a35e 100%)"
+  }
+}
