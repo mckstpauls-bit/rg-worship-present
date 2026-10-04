@@ -5,7 +5,7 @@
 #   npm version 1.2.0 && git push --follow-tags
 #
 # Then point Settings -> Updates on each church computer at:
-#   https://github.com/OWNER/REPO/releases/latest/download/updates.json
+#   https://github.com/YOUR-ACCOUNT/rg-worship-present/releases/latest/download/updates.json
 name: Release
 
 on:

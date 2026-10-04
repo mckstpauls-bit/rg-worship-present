@@ -1,7 +1,9 @@
 # RG-Present
 
+Created by **RG DEV Industries** · <rgdev.ke@gmail.com>
+
 Worship presentation software for Windows: an EasyWorship-style operator screen with a modern look.
-Ships with **3,070 public-domain hymns** (English and Kimeru) and the **King James Version** of the Bible.
+Ships with **3,648 public-domain hymns** (English and Kimeru) and the **King James Version** of the Bible.
 Works fully offline.
 
 ## Run it
@@ -45,6 +47,7 @@ npm run dist
 | Pack | Songs |
 | --- | --- |
 | The Open Hymnal (2014.06) | 292 curated classics with verse/chorus structure |
+| Sacred Songs & Solos (Sankey) | 578 gospel hymns, tagged for proofreading |
 | The Christian Hymn Book (1870) | 1,324 |
 | Wesleyan Methodist Hymn Book (1869) | 773 |
 | The Otterbein Hymnal (1890) | 545 |
@@ -80,18 +83,29 @@ checking the result chapter by chapter against the KJV's verse counts.
 ## Keeping every computer up to date
 
 RG-Present updates itself from **one folder you control** — a web address, or a share such as
-`\church-servergpresent`. Nothing is contacted unless you set a source.
+`\church-server
+gpresent`. Nothing is contacted unless you set a source.
 
 **Publish an update** from the development machine:
 
 ```bash
 npm run dist                         # build the installer
 npm run build-packs                  # rebuild content/*.rgpkg
-npm run make-feed -- "\church-servergpresent" --notes "Fixed hymn 212, added 3 Kimeru hymns"
+npm run make-feed -- "\church-server
+gpresent" --notes "Fixed hymn 212, added 3 Kimeru hymns"
 ```
 
 That copies the installer and every pack into the folder and writes `updates.json` with SHA-256
 checksums. Pass `--no-app` to publish only content.
+
+Or publish through **GitHub Releases** — push a tag and the workflow in `.github/workflows/release.yml`
+builds and publishes everything, so the update source on each computer is just:
+
+```
+https://github.com/YOUR-ACCOUNT/rg-worship-present/releases/latest/download/updates.json
+```
+
+See [PUBLISHING.md](PUBLISHING.md).
 
 **On each church computer**, once: Settings → Updates → paste the folder or URL. After that:
 
